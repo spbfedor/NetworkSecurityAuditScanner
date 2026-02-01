@@ -1,5 +1,5 @@
 {
-    "host": "google.com",
+    "target": "google.com",
     "ports": [21, 22, 23, 53, 80, 443, 8080, 8443],
     "timeout": 1.5
 }
