@@ -1,36 +1,42 @@
 [
     {
-        "port": 21,
-        "status": "closed"
+        "port": 80,
+        "status": "open",
+        "banner": "HTTP/1.1 301 Moved Permanently\r\nLocation: http://www.google.com/\r\nContent-Type: text/html; charset=U"
     },
     {
         "port": 443,
-        "status": "closed"
-    },
-    {
-        "port": 8443,
-        "status": "closed"
-    },
-    {
-        "port": 8080,
-        "status": "closed"
-    },
-    {
-        "port": 53,
-        "status": "closed"
-    },
-    {
-        "port": 23,
-        "status": "closed"
-    },
-    {
-        "port": 80,
         "status": "open",
-        "banner": "HTTP/1.1 200 OK\r\nDate: Thu, 29 Jan 2026 17:47:30 GMT\r\nServer: Apache/2.4.7 (Ubuntu)\r\nAccept-Ranges: bytes\r\nVary: Accept-Encoding"
+        "banner": "HTTP/1.1 301 Moved Permanently\r\nLocation: https://www.google.com/\r\nContent-Type: text/html; charset="
+    },
+    {
+        "port": 21,
+        "status": "closed",
+        "banner": null
     },
     {
         "port": 22,
-        "status": "open",
-        "banner": "SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2.13\r\n"
+        "status": "closed",
+        "banner": null
+    },
+    {
+        "port": 23,
+        "status": "closed",
+        "banner": null
+    },
+    {
+        "port": 53,
+        "status": "closed",
+        "banner": null
+    },
+    {
+        "port": 8080,
+        "status": "closed",
+        "banner": null
+    },
+    {
+        "port": 8443,
+        "status": "closed",
+        "banner": null
     }
 ]
