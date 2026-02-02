@@ -1,13 +1,25 @@
 import asyncio
 import json
+import logging
 import socket
 import ssl
 
 
 class NetworkAuditScanner:
     def __init__(self, config_path):
+        logging.basicConfig(
+            level=logging.INFO,
+            format="%(asctime)s - %(levelname)s - %(message)s",
+            handlers=[
+                logging.FileHandler("scanner.log"),
+                logging.StreamHandler()
+            ]
+        )
+        self.logger = logging.getLogger(__name__)
+
         with open(config_path, "r") as file:
             self.config = json.loads(file.read())
+
         self.ssl_context = ssl.create_default_context()
         self.ssl_context.check_hostname = False
         self.ssl_context.verify_mode = ssl.CERT_NONE
@@ -17,13 +29,14 @@ class NetworkAuditScanner:
     async def resolve_target(self):
         loop = asyncio.get_running_loop()
         try:
+            self.logger.info(f"Начинаю поиск IP для {self.config['target']}")
             info = await loop.getaddrinfo(
                 self.config["target"],
                 None,
                 family=socket.AF_INET
             )
         except socket.gaierror as e:
-            print(f"Заданный хост не найден {e}")
+            self.logger.error(f"Хост {self.config['target']} не найден - {e}")
             return
         self.target_ip = info[0][4][0]   
 
@@ -39,7 +52,7 @@ class NetworkAuditScanner:
             ssl_context = None
             if port == 443:
                 ssl_context = self.ssl_context
-    
+            self.logger.info(f"Сканирую порт: {port}")
             connect = asyncio.open_connection(
                 self.config["target"],
                 port, ssl=ssl_context
