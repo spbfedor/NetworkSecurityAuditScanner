@@ -1,0 +1,10 @@
+scan_report.json
+scanner.log
+
+__pycache__/
+*.pyc
+
+.vscode/
+.idea/
+
+.git/

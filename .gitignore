@@ -1,0 +1,12 @@
+scan_report.json
+scanner.log
+
+__pycache__/
+*.py[cod]
+
+.venv/
+env/
+.vscode/
+.idea/
+
+.DS_Store
